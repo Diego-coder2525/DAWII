@@ -11,15 +11,24 @@ import { AuthService } from '../auth.service';
 export class RegisterComponent {
   form : FormGroup = this.fb.group
   ({
-    name: ['', Validators.required],
-    email: ['', Validators.required],
-    password: ['', Validators.required]
+    username: ['', Validators.required],
+    password: ['', Validators.required],
+    lastname: ['', Validators.required],
+    firstname: ['', Validators.required],
+    country: ['', Validators.required],
     });
   constructor(private authService: AuthService,private fb: FormBuilder,private router: Router ){
     
   }
   register(){
-    this.authService.register(this.form.value.name,this.form.value.email,this.form.value.password);
+    let registerBody = {
+      username: this.form.value.username,
+      password: this.form.value.password,
+      lastname: this.form.value.lastname,
+      firstname: this.form.value.firstname,
+      country: this.form.value.country,
+    };
+    this.authService.registerUser(registerBody);
   }
   login(){
     this.router.navigateByUrl('/login')

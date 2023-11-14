@@ -1,8 +1,10 @@
 <div id="container" [formGroup]="form">
     <h1>Register</h1>
-    <input type="text" formControlName="name">
-    <input type="email" formControlName="email">
+    <input type="text" formControlName="username"><!-- no validado para prueba con mockapi, pendiente cambiar a tipo email-->
     <input type="password" formControlName="password">
+    <input type="text" formControlName="lastname">
+    <input type="text" formControlName="firstname">
+    <input type="text" formControlName="country">
     <button (click)="register()">Register</button>
     <button (click)="login()">Login</button>
     {{form.value | json}}

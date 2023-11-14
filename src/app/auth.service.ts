@@ -1,26 +1,36 @@
 import { Injectable } from '@angular/core';
+import { ApiService } from './service/api.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  users: any[] = [
-    { id: 1, name: 'admin', email: 'admin@gmail.com', password: '123' },
-    { id: 2, name: 'user', email: 'user@gmail.com', password: '123' },
-  ];
-  session: any;
-  constructor() {}
+  constructor(private apiService: ApiService) {}
+  private readonly TOKEN_KEY = 'auth_token';
 
-  login(email:string,password:string){
-    let user = this.users.find((u)=>u.email === email && u.password === password)
-    if(user){
-      this.session = user;
-      localStorage.setItem('session',JSON.stringify(this.session));
-    }
+  setAuthToken(token: string): void {
+    localStorage.setItem(this.TOKEN_KEY, token);
+  }
 
-    return user;
+  getAuthToken(): string | null {
+    return localStorage.getItem(this.TOKEN_KEY);
   }
-  register(name:string,email:string,password:string){
-    this.users.push({email,password,name});
+
+  removeAuthToken(): void {
+    localStorage.removeItem(this.TOKEN_KEY);
   }
+  registerUser(registerBody: any) {
+    this.apiService.postData(registerBody).subscribe((data)=>{
+      if(data!=undefined){
+        alert("Usuario registrado correctamente");
+      }else{
+        alert("Usuario no registrado");
+      }
+
+    })
+  }
+  loginUser(loginBody: any){
+    return this.apiService.loginData(loginBody);
+  }
+
 }

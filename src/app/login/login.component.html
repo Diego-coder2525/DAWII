@@ -1,0 +1,7 @@
+<div id="container" [formGroup]="form">
+    <h1>Login</h1>
+    <input type="email" formControlName="email">
+    <input type="password" formControlName="password">
+    <button (click)="login()">Login</button>
+    {{form.value | json}}
+</div>

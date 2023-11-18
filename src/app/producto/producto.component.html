@@ -1,0 +1,71 @@
+<div class="container p-3">
+    <div class="row">
+
+        <div class="col-md-4">
+            <form class="card" [formGroup]="productoForm">
+                <div class="card-body p-2">
+                    <input
+                        formControlName="cantidad"
+                        class="form-control"
+                        placeholder="Cantidad"
+                    >
+                    <input
+                        formControlName="descripcion"
+                        class="form-control"
+                        placeholder="Descripcion"
+                    >
+                    <input
+                        formControlName="etiquetas"
+                        class="form-control"
+                        placeholder="Etiquetas"
+                    >
+                    <input
+                        formControlName="Imagen"
+                        class="form-control"
+                        placeholder="Imagen"
+                    >
+                    <input
+                        formControlName="nombre"
+                        class="form-control"
+                        placeholder="Nombre"
+                    >
+                    <input
+                        formControlName="precio"
+                        class="form-control"
+                        placeholder="Precio"
+                    >
+                    <button (click)="agregarProducto()" class="btn btn-dark">
+                        Aceptar
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-md-8">
+            <table class="table table-bordered table-dark">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Cantidad</th>
+                        <th>Descripcion</th>
+                        <th>Etiquetas</th>
+                        <th>Imagen</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let producto of productos; index as i;">
+                        <td>{{i+1}}</td>
+                        <td>{{producto.cantidad}}</td>
+                        <td>{{producto.descripcion}}</td>
+                        <td>{{producto.etiquetas}}</td>
+                        <td>{{producto.imagen}}</td>
+                        <td>{{producto.nombre}}</td>
+                        <td>{{producto.precio}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

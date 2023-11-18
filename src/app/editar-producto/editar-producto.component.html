@@ -1,0 +1,15 @@
+<div *ngIf="mostrarFormularioEdicion">
+    <h2>Editar Producto</h2>
+    <form>
+      <label>Nombre:</label>
+      <input [(ngModel)]="productoEditado.nombre" name="nombre" />
+  
+      <label>Precio:</label>
+      <input [(ngModel)]="productoEditado.precio" name="precio" />
+  
+      <!-- Otros campos del producto -->
+  
+      <button (click)="guardarCambios()">Guardar</button>
+      <button (click)="cancelarEdicion()">Cancelar</button>
+    </form>
+  </div>

@@ -1,0 +1,38 @@
+<div>
+    <h2>Crear Nuevo Producto</h2>
+    <form (ngSubmit)="agregarProducto()">
+      <div>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" [(ngModel)]="nuevoProducto.nombre" required>
+      </div>
+  
+      <div>
+        <label for="etiquetas">Etiquetas:</label>
+        <input type="text" id="etiquetas" name="etiquetas" [(ngModel)]="nuevoProducto.etiquetas">
+      </div>
+  
+      <div>
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" name="descripcion" [(ngModel)]="nuevoProducto.descripcion"></textarea>
+      </div>
+  
+      <div>
+        <label for="precio">Precio:</label>
+        <input type="number" id="precio" name="precio" [(ngModel)]="nuevoProducto.precio" required>
+      </div>
+  
+      <div>
+        <label for="imagen">Imagen:</label>
+        <input type="text" id="imagen" name="imagen" [(ngModel)]="nuevoProducto.imagen">
+      </div>
+  
+      <div>
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" id="cantidad" name="cantidad" [(ngModel)]="nuevoProducto.cantidad" required>
+      </div>
+  
+      <div>
+        <button type="submit">Guardar Producto</button>
+      </div>
+    </form>
+  </div>

@@ -29,7 +29,13 @@ export class RegisterComponent {
       firstname: this.form.value.firstname,
       country: this.form.value.country,
     };
+   if(registerBody.username=="" || registerBody.password=="" || registerBody.lastname=="" || registerBody.firstname=="" || registerBody.country==""){
+      alert("Faltan campos por llenar");
+   }else{
     this.authService.registerUser(registerBody);
+   }
+    
+    
   }
   login(){
     this.router.navigateByUrl('/login')

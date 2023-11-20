@@ -51,13 +51,14 @@ export class ProductoComponent implements OnInit {
     };
     this.servicio.agregarProducto(producto).subscribe(
       res => {
-        this.productos.push(res);
+        console.log(res);
         this.productoForm.reset();
       },
       error => {
         console.log(error);
       }
     );
+    
   }
   
 }

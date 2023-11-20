@@ -8,6 +8,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { ProductoComponent } from './producto/producto.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './angular-material/material/material.module';
 
 
 
@@ -18,13 +20,15 @@ import { ProductoComponent } from './producto/producto.component';
     RegisterComponent,
     HomeComponent,
     ProductoComponent,
-
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

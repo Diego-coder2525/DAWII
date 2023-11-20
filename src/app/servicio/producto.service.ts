@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Producto} from '../modelo/producto';
-
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +11,13 @@ export class ProductoService {
   constructor(private http:HttpClient) { }
 
   public getProductos(){
-    return this.http.get<Producto[]>(this.url+'/productos')
+    let head_options = new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem("auth_token"));
+    return this.http.get<Producto[]>(this.url+'/prod/productos',{headers:head_options});
   }
   public agregarProducto(obj:Producto){
-    return this.http.post<Producto>(this.url+'/productos/crear',obj)
+    console.log(obj);
+    let head_options = new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem("auth_token"));
+    return this.http.post<Producto>(this.url+'/prod/producto/crear',obj,{headers:head_options});
   }
+  
 }

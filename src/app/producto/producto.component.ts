@@ -1,14 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Producto } from '../modelo/producto';
-import { ProductoService } from '../servicio/producto.service';
+import { ProductoService } from '../service/producto.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormField } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+
 
 @Component({
   selector: 'app-producto',
   templateUrl: './producto.component.html',
-  styleUrls: ['./producto.component.css']
+  styleUrls: ['./producto.component.css'],
+  standalone:true,
+  imports: [ReactiveFormsModule,MatInputModule,CommonModule,MatButtonModule]
 })
 export class ProductoComponent implements OnInit {
   productos: Producto[] = [];
@@ -51,14 +59,13 @@ export class ProductoComponent implements OnInit {
     };
     this.servicio.agregarProducto(producto).subscribe(
       res => {
-        console.log(res);
+        this.productos.push(res);
         this.productoForm.reset();
       },
       error => {
         console.log(error);
       }
     );
-    
   }
   
 }

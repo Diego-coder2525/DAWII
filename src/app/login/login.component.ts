@@ -1,14 +1,18 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../auth.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../service/auth.service';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../service/api.service';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  standalone:true,
+  imports: [MatButtonModule,ReactiveFormsModule]
 })
+
 export class LoginComponent {
   form : FormGroup = this.fb.group
   ({

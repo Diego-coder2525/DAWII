@@ -1,0 +1,35 @@
+.containerG{
+    background-color: cadetblue;
+}
+.containerF {
+    display: flex;
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+    height: 40vh;
+    
+  }
+.containerT{
+    display: flex;
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+}
+  
+  #productoForm {
+    width: 300px; /* O ajusta el ancho según tus necesidades */
+  }
+  
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .form-field {
+    width: 45%; /* Ancho de cada campo de entrada */
+  }
+  
+  .button-row {
+    text-align: center;
+    margin-top: 10px;
+  }
+  

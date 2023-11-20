@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LandingComponent } from './landing.component';
 import { RouterModule } from '@angular/router';
-
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
@@ -14,7 +15,9 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    MatSlideToggleModule,
+    MatButtonModule
   ]
 })
 export class LandingModule { }

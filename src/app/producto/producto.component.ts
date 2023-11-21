@@ -10,13 +10,12 @@ import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 
-
 @Component({
   selector: 'app-producto',
   templateUrl: './producto.component.html',
   styleUrls: ['./producto.component.css'],
-  standalone:true,
-  imports: [ReactiveFormsModule,MatInputModule,CommonModule,MatButtonModule]
+  standalone: true,
+  imports: [ReactiveFormsModule, MatInputModule, CommonModule, MatButtonModule],
 })
 export class ProductoComponent implements OnInit {
   productos: Producto[] = [];
@@ -27,7 +26,7 @@ export class ProductoComponent implements OnInit {
     etiquetas: new FormControl(''),
     imagen: new FormControl(''),
     nombre: new FormControl(''),
-    precio: new FormControl('')
+    precio: new FormControl(''),
   });
 
   constructor(private servicio: ProductoService) {}
@@ -38,11 +37,11 @@ export class ProductoComponent implements OnInit {
 
   private getProductos() {
     this.servicio.getProductos().subscribe(
-      res => {
+      (res) => {
         console.log(res);
         this.productos = res;
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -55,30 +54,35 @@ export class ProductoComponent implements OnInit {
       etiquetas: this.productoForm.get('etiquetas')?.value,
       imagen: this.productoForm.get('imagen')?.value,
       nombre: this.productoForm.get('nombre')?.value,
-      precio: this.productoForm.get('precio')?.value
+      precio: this.productoForm.get('precio')?.value,
     };
-    
-    if(producto.cantidad=="" || producto.descripcion=="" || producto.etiquetas=="" || producto.imagen=="" || producto.nombre=="" || producto.precio==""){
-      alert("Faltan campos por llenar");
-    }else{
-      if(typeof producto.cantidad != "number" || typeof producto.precio != "number"){
-        alert("Los campos de cantidad y precio deben ser numericos");
-      }else{
-        this.servicio.agregarProducto(producto).subscribe(
-          res => {
-            this.productos.push(res);
-            this.productoForm.reset();
-          },
-          error => {
-            console.log(error);
-          }
-        );
-      }
-      }
-      
-    
-  }
-    
-  
-}
 
+    if (
+      producto.cantidad == '' ||
+      producto.descripcion == '' ||
+      producto.etiquetas == '' ||
+      producto.imagen == '' ||
+      producto.nombre == '' ||
+      producto.precio == ''
+    ) {
+      alert('Faltan campos por llenar');
+    } else {
+      let validacionProductoPrecio = parseInt(producto.precio?.toString()!);
+      let validacionProductoCantidad = parseInt(producto.cantidad?.toString()!);
+      if (
+        Number.isNaN(validacionProductoPrecio) ||
+        Number.isNaN(validacionProductoCantidad)
+      ) {
+        alert('Precio o cantidad no son numeros');
+      } else {
+        try {
+          this.servicio.agregarProducto(producto).subscribe(() => {
+            alert('Producto agregado correctamente');
+          });
+        } catch (error) {
+          alert('Error al agregar producto');
+        }
+      }
+    }
+  }
+}

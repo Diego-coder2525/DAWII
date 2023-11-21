@@ -22,6 +22,7 @@ export class RegisterComponent {
     
   }
   register(){
+    
     let registerBody = {
       username: this.form.value.username,
       password: this.form.value.password,
@@ -32,7 +33,12 @@ export class RegisterComponent {
    if(registerBody.username=="" || registerBody.password=="" || registerBody.lastname=="" || registerBody.firstname=="" || registerBody.country==""){
       alert("Faltan campos por llenar");
    }else{
-    this.authService.registerUser(registerBody);
+    if(registerBody.password.length<8 || !registerBody.password.match(/[A-Z]/) || !registerBody.password.match(/[0-9]/) || !registerBody.password.match(/[!@#$%^&*]/)){
+      alert("La contraseña debe tener al menos 8 caracteres, una mayuscula, un numero y un caracter especial");
+    }else{
+      this.authService.registerUser(registerBody);
+    }
+    
    }
     
     

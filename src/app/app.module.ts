@@ -10,6 +10,8 @@ import { ProductoComponent } from './producto/producto.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './angular-material/material/material.module';
 import { LoginComponent } from './login/login.component';
+import { FooterComponent } from './footer/footer.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { LoginComponent } from './login/login.component';
    
     RegisterComponent,
     HomeComponent,
+    FooterComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

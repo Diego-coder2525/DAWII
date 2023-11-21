@@ -40,7 +40,7 @@ export class LoginComponent {
           this.router.navigateByUrl('/home');
         },
         (error) => {
-          alert(error);
+          alert("Usuario no logueado.");
         }
       );
     }

@@ -57,16 +57,28 @@ export class ProductoComponent implements OnInit {
       nombre: this.productoForm.get('nombre')?.value,
       precio: this.productoForm.get('precio')?.value
     };
-    this.servicio.agregarProducto(producto).subscribe(
-      res => {
-        this.productos.push(res);
-        this.productoForm.reset();
-      },
-      error => {
-        console.log(error);
+    
+    if(producto.cantidad=="" || producto.descripcion=="" || producto.etiquetas=="" || producto.imagen=="" || producto.nombre=="" || producto.precio==""){
+      alert("Faltan campos por llenar");
+    }else{
+      if(typeof producto.cantidad != "number" || typeof producto.precio != "number"){
+        alert("Los campos de cantidad y precio deben ser numericos");
+      }else{
+        this.servicio.agregarProducto(producto).subscribe(
+          res => {
+            this.productos.push(res);
+            this.productoForm.reset();
+          },
+          error => {
+            console.log(error);
+          }
+        );
       }
-    );
+      }
+      
+    
   }
+    
   
 }
 

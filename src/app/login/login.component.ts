@@ -27,20 +27,24 @@ export class LoginComponent {
       username: this.form.value.username,
       password: this.form.value.password,
     };
-
-    this.authService.loginUser(loginBody).subscribe(
-      (Token) => {
-        alert("Usuario logueado correctamente: ");
-        let userToken = Token.token;
-        // guardo el token en el localStorage
-        this.authService.setAuthToken(userToken);
-        // redirijo al home
-        this.router.navigateByUrl('/home');
-      },
-      (error) => {
-        alert(error);
-      }
-    );
+    if(loginBody.username=="" || loginBody.password==""){
+      alert("Faltan campos por llenar");
+    }else{
+      this.authService.loginUser(loginBody).subscribe(
+        (Token) => {
+          alert("Usuario logueado correctamente: ");
+          let userToken = Token.token;
+          // guardo el token en el localStorage
+          this.authService.setAuthToken(userToken);
+          // redirijo al home
+          this.router.navigateByUrl('/home');
+        },
+        (error) => {
+          alert(error);
+        }
+      );
+    }
+    
     
   }
   register(){

@@ -32,4 +32,17 @@
     text-align: center;
     margin-top: 10px;
   }
+  .filter-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px; /* Ajusta según sea necesario */
+  }
   
+  .filter-container mat-form-field {
+    margin-right: 10px; /* Ajusta según sea necesario */
+  }
+  
+  .filter-container button {
+    margin-left: 10px; /* Ajusta según sea necesario */
+  }

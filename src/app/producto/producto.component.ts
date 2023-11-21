@@ -19,6 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class ProductoComponent implements OnInit {
   productos: Producto[] = [];
+  productosFiltrados: any[] = [];
 
   productoForm = new FormGroup({
     cantidad: new FormControl(''),
@@ -85,4 +86,15 @@ export class ProductoComponent implements OnInit {
       }
     }
   }
+
+
+  filtroNombre: string = '';
+
+  aplicarFiltro() {
+    this.productosFiltrados = this.productos.filter(producto =>
+      producto && producto.nombre && producto.nombre.toLowerCase().includes(this.filtroNombre.toLowerCase())
+    );
+  }
+  
+
 }

@@ -46,6 +46,13 @@
       </div>
     </form>
   </div>
+  <div class="filter-row">
+    <mat-form-field class="form-field">
+      <mat-label>Filtrar por Nombre</mat-label>
+      <input matInput [(ngModel)]="filtroNombre" />
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="aplicarFiltro()">Filtrar</button>
+  </div>
   <div class="containerT">
     <table>
       <thead>
@@ -66,7 +73,7 @@
           <td>{{ producto.descripcion }}</td>
           <td>{{ producto.etiquetas }}</td>
           <td>{{ producto.imagen }}</td>
-          <td>{{ producto.nombre }}</td>
+          <td>{{ producto?.nombre }}</td>
           <td>{{ producto.precio }}</td>
         </tr>
       </tbody>

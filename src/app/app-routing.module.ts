@@ -1,32 +1,52 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { HomeComponent } from './home/home.component';
-import { ProductoComponent } from './producto/producto.component';
-
+import { HeaderComponent } from './components/seccion/header/header.component';
+import { LoginComponent } from './components/seccion/login/login.component';
+import { RegistroComponent } from './components/seccion/registro/registro.component';
+import { ProductosComponent } from './components/seccion/productos/productos.component';
+import { VerProductoComponent } from './components/seccion/ver-producto/ver-producto.component';
+import { CarritoComponent } from './components/seccion/carrito/carrito.component';
+import { VenderComponent } from './components/seccion/mi-panel/vender/vender.component';
+import { MiPerfilComponent } from './components/seccion/mi-panel/mi-perfil/mi-perfil.component';
+import { MisProductosComponent } from './components/seccion/mi-panel/mis-productos/mis-productos.component';
+import { AyudaComponent } from './components/seccion/ayuda/ayuda.component';
+import { GuardService as guard } from './guards/guard.service';
+import { EditarProductoComponent } from './components/seccion/mi-panel/editar-producto/editar-producto.component';
+import { AdministrarComponent } from './components/seccion/mi-panel/administrar/administrar.component';
 const routes: Routes = [
+  { path: 'inicio', component: HeaderComponent },
+  { path: '', redirectTo: '/inicio', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'registro', component: RegistroComponent },
+  { path: 'productos', component: ProductosComponent },
+  { path: 'ver-producto/:id', component: VerProductoComponent },
+  { path: 'carrito', component: CarritoComponent },
   {
-    path: '',
-    loadChildren: () =>
-      import('./public/public.module').then((m) => m.PublicModule),
+    path: 'mi-perfil',
+    component: MiPerfilComponent,
+    canActivate: [guard],
+    data: { expectedRol: ['user', 'admin'] },
   },
   {
-    path:'login',
-    component: LoginComponent
+    path: 'admin',
+    component: AdministrarComponent,
+    canActivate: [guard],
+    data: { expectedRol: ['admin'] },
   },
   {
-    path:'register',
-    component: RegisterComponent
+    path: 'mis-productos',
+    component: MisProductosComponent,
+    canActivate: [guard],
+    data: { expectedRol: ['user', 'admin'] },
   },
   {
-    path:'home',
-    component: HomeComponent
+    path: 'edit-producto/:id',
+    component: EditarProductoComponent,
+    canActivate: [guard],
+    data: { expectedRol: ['user', 'admin'] },
   },
-  {
-    path:'productos',
-    component: ProductoComponent
-  }
+  { path: 'agregar-producto', component: VenderComponent },
+  { path: 'ayuda', component: AyudaComponent },
 ];
 
 @NgModule({

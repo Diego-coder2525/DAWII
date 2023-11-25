@@ -1,0 +1,60 @@
+<section class="container mx-auto my-5">
+  <div class="row row-cols-1 row-cols-md-2 g-4 my-4">
+    <div class="col align-self-center px-5 mx-auto">
+      <div class="container-fluid bg-primario p-4">
+        <div class="text-center">
+          <img src="../../../../assets/logo1.jpg" class="img-fluid img-logo" />
+        </div>
+        <h1 class="text-center my-2 fw-bold text-dark">Iniciar Sesión</h1>
+        <form
+          class="container mx-auto my-2"
+          #f="ngForm"
+          (ngSubmit)="onLogin()"
+          novalidate
+        >
+          <div class="form__group field mx-auto mb-4">
+            <label class="form__label fw-bold" for="name"
+              >Nombre de usuario</label
+            >
+            <input
+              placeholder="Name"
+              class="form__field"
+              id="nombreUsuario"
+              name="nombreUsuario"
+              type="text"
+              [(ngModel)]="nombreUsuario"
+              required
+            />
+          </div>
+          <div class="form__group field mx-auto">
+            <label class="form__label fw-bold" for="password"
+              >Contraseña
+            </label>
+            <input
+              placeholder="Name"
+              class="form__field"
+              type="password"
+              id="password"
+              name="password"
+              [(ngModel)]="password"
+              required
+            />
+          </div>
+          <div class="container my-3 text-center" *ngIf="loader">
+            <div class="line-wobble mx-auto"></div>
+          </div>
+          <p *ngIf="isLoginFail" class="text-center text-danger mt-3 fw-bold">
+            {{ errMensj }}
+          </p>
+          <div class="text-center my-4">
+            <button class="mt-2 enviar fw-bold" type="submit">Enviar</button>
+          </div>
+        </form>
+        <p>
+          Si no tienes cuenta unete aquí
+          <a class="text-primario" routerLink="/registro">Crear Cuenta</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,73 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <div class="text-start">
+      <a routerLink="/inicio">
+        <img
+          src="../../../assets/logo2.jpg"
+          class="img-fluid img-logo"
+          alt="logo Mi Tec"
+        />
+      </a>
+    </div>
+    <div class="d-lg-none d-xl-none d-xxl-none" *ngIf="isLogged">
+      <a routerLink="/mi-perfil">
+        <i class="bi bi-person-lines-fill text-primario"></i>
+      </a>
+    </div>
+    <div class="d-lg-none d-xl-none d-xxl-none" *ngIf="isLogged">
+      <a routerLink="/carrito">
+        <i class="bi bi-cart3 text-primario icon"></i>
+      </a>
+    </div>
+    <div class="d-lg-none d-xl-none d-xxl-none" *ngIf="isLogged">
+      <i class="bi bi-box-arrow-right text-primario" (click)="onLogOut()"></i>
+    </div>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mx-3 mb-2 mb-lg-0 align-items-center">
+        <li class="nav-item">
+          <a class="nav-link fw-bold btn" routerLink="/inicio">Inicio</a>
+        </li>
+        <li
+          class="nav-item mx-2 d-none d-lg-block d-xl-block d-xxl-block"
+          *ngIf="isLogged"
+        >
+          <a routerLink="/mi-perfil">
+            <i class="bi bi-person-lines-fill text-primario"></i>
+          </a>
+        </li>
+        <li
+          class="nav-item mx-2 d-none d-lg-block d-xl-block d-xxl-block"
+          *ngIf="isLogged"
+        >
+          <a routerLink="/carrito">
+            <i class="bi bi-cart3 text-primario"></i>
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="currentRoute !== '/registro' && !isLogged">
+          <a class="nav-link fw-bold btn" routerLink="/registro">
+            Creá tu cuenta
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="currentRoute !== '/login' && !isLogged">
+          <a class="nav-link fw-bold btn" routerLink="/login">Ingresá</a>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="isLogged" class="nav-link fw-bold btn" (click)="onLogOut()">
+            Cerrar Sesión
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

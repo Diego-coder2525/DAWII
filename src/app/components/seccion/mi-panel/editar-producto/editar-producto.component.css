@@ -1,0 +1,133 @@
+a {
+  text-decoration: none;
+}
+a:hover {
+  /* color: var(--primary); */
+  text-decoration: none;
+}
+article {
+  min-height: 100vh;
+}
+.bg-primario {
+  background-color: var(--primary);
+}
+.active-link {
+  background-color: #9e6eff;
+  color: white;
+}
+.input {
+  width: 100%;
+  line-height: 28px;
+  border: 2px solid transparent;
+  border-bottom-color: var(--primary);
+  padding: 0.2rem 0;
+  outline: none;
+  background-color: transparent;
+  color: #0d0c22;
+  transition: 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+/* boton enviar para datos */
+.enviar {
+  --color: var(--primary);
+  padding: 9px 10px;
+  background-color: transparent;
+  border-radius: 0.3em;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.5s;
+  font-weight: 400;
+  font-size: 17px;
+  border: 1px solid;
+  color: var(--color);
+  z-index: 1;
+}
+
+.enviar::before,
+.enviar::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 50px;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  border-radius: 50%;
+  z-index: -1;
+  background-color: var(--color);
+  transition: 1s ease;
+}
+
+.enviar::before {
+  top: -1em;
+  left: -1em;
+}
+
+.enviar::after {
+  left: calc(100% + 1em);
+  top: calc(100% + 1em);
+}
+
+.enviar:hover::before,
+.enviar:hover::after {
+  height: 410px;
+  width: 410px;
+}
+
+.enviar:hover {
+  color: white;
+}
+
+.enviar:active {
+  filter: brightness(0.8);
+}
+.imgPrevi {
+  width: auto;
+  height: 190px;
+}
+/* loader */
+.line-wobble {
+  --uib-size: 80px;
+  --uib-speed: 1.55s;
+  --uib-line-weight: 5px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--uib-line-weight);
+  width: var(--uib-size);
+  border-radius: calc(var(--uib-line-weight) / 2);
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.line-wobble::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--primary);
+  opacity: 0.1;
+}
+
+.line-wobble::after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  border-radius: calc(var(--uib-line-weight) / 2);
+  animation: wobble var(--uib-speed) ease-in-out infinite;
+  transform: translateX(-90%);
+  background-color: var(--primary);
+}
+
+@keyframes wobble {
+  0%,
+  100% {
+    transform: translateX(-90%);
+  }
+
+  50% {
+    transform: translateX(90%);
+  }
+}

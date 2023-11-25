@@ -1,0 +1,59 @@
+<section class="container mt-4 body">
+  <article class="row">
+    <nav class="col-md-3">
+      <div class="list-group">
+        <a
+          class="list-group-item list-group-item-action bg-primario text-light fw-bold"
+        >
+          Panel de Control
+        </a>
+        <a
+          routerLink="/mi-perfil"
+          class="list-group-item list-group-item-action"
+          [ngClass]="{ 'active-link': router.url === '/mi-perfil' }"
+        >
+          Mi Perfil
+        </a>
+        <a
+          routerLink="/agregar-producto"
+          class="list-group-item list-group-item-action"
+          [ngClass]="{ 'active-link': router.url === '/agregar-producto' }"
+        >
+          Agregar Producto
+        </a>
+        <a
+          routerLink="/mis-productos"
+          class="list-group-item list-group-item-action"
+          [ngClass]="{ 'active-link': router.url === '/mis-productos' }"
+        >
+          Mis Productos
+        </a>
+      </div>
+    </nav>
+    <div class="col-md-9">
+      <header>
+        <h3 class="my-3">Mi Perfil</h3>
+      </header>
+      <hr />
+      <main>
+        <div class="container text-center my-5" *ngIf="!usuario">
+          <div class="line-wobble mx-auto"></div>
+        </div>
+        <div class="row" *ngIf="usuario">
+          <div class="col-md-6">
+            <p><strong>Nombre Usuario:</strong> {{ usuario.nombreUsuario }}</p>
+            <p>
+              <strong>Nombre Completo:</strong> {{ usuario.nombreApellido }}
+            </p>
+            <p><strong>Email:</strong> {{ usuario.email }}</p>
+          </div>
+          <div class="col-md-6">
+            <p><strong>País:</strong> Argentina</p>
+            <p><strong>Teléfono:</strong> {{ usuario.telefono }}</p>
+            <p><strong>Ubicación:</strong> {{ usuario.ubicacion }}</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </article>
+</section>

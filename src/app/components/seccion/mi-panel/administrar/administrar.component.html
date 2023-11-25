@@ -1,0 +1,66 @@
+<section class="container mt-4">
+  <article class="row">
+    <nav class="col-md-3">
+      <div class="list-group">
+        <a
+          class="list-group-item list-group-item-action bg-primario text-light fw-bold"
+        >
+          Panel de Control
+        </a>
+        <a
+          routerLink="/mi-perfil"
+          class="list-group-item list-group-item-action"
+          [ngClass]="{ 'active-link': router.url === '/mi-perfil' }"
+          >Mi Perfil</a
+        >
+        <a
+          routerLink="/agregar-producto"
+          class="list-group-item list-group-item-action"
+          [ngClass]="{ 'active-link': router.url === '/agregar-producto' }"
+        >
+          Agregar Producto
+        </a>
+        <a
+          routerLink="/mis-productos"
+          class="list-group-item list-group-item-action"
+          [ngClass]="{ 'active-link': router.url === '/mis-productos' }"
+        >
+          Mis Productos
+        </a>
+      </div>
+    </nav>
+    <div class="col-md-9">
+      <header>
+        <h3 class="my-3">Administrar</h3>
+        <p>Aquí podrás ver los usuarios registrados en tu web.</p>
+      </header>
+      <hr />
+      <main>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">N°</th>
+              <th scope="col">Usuario</th>
+              <th scope="col">Nombre Completo</th>
+              <th scope="col">Ban</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let usuario of usuarios; let i = index">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{ usuario.nombreUsuario }}</td>
+              <td>{{ usuario.nombreApellido }}</td>
+              <td>
+                <i
+                  (click)="eliminarUser(usuario.id_usuario)"
+                  class="bi bi-x-square text-primario mx-3"
+                  style="font-size: 20px; cursor: pointer"
+                ></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </main>
+    </div>
+  </article>
+</section>

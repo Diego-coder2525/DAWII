@@ -1,36 +1,26 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ApiService } from './api.service';
-
+import { Observable } from 'rxjs';
+import { JwtDto } from '../modelo/jwt-dto';
+import { LoginUsuario } from '../modelo/login-usuario';
+import { NuevoUsuario } from '../modelo/nuevo-usuario';
+import { Usuario } from '../modelo/Usuario';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private apiService: ApiService) {}
-  private readonly TOKEN_KEY = 'auth_token';
+  //private authURL = 'https://backend-mitec-api-production.up.railway.app/auth/';
+   authURL = 'http://localhost:8080/auth/';
+  constructor(private http: HttpClient) {}
 
-  setAuthToken(token: string): void {
-    localStorage.setItem(this.TOKEN_KEY, token);
+  public nuevo(nuevoUsuario: NuevoUsuario): Observable<any> {
+    return this.http.post<any>(this.authURL + 'register', nuevoUsuario);
   }
 
-  getAuthToken(): string | null {
-    return localStorage.getItem(this.TOKEN_KEY);
+  public login(loginUsuario: LoginUsuario): Observable<JwtDto> {
+    return this.http.post<JwtDto>(this.authURL + 'login', loginUsuario);
   }
-
-  removeAuthToken(): void {
-    localStorage.removeItem(this.TOKEN_KEY);
+  public obtenerUsuario(): Observable<Usuario> {
+    return this.http.get<Usuario>(this.authURL + 'usuario');
   }
-  registerUser(registerBody: any) {
-    this.apiService.postData(registerBody).subscribe((data)=>{
-      if(data!=undefined){
-        alert("Usuario registrado correctamente");
-      }else{
-        alert("Usuario no registrado");
-      }
-
-    })
-  }
-  loginUser(loginBody: any){
-    return this.apiService.loginData(loginBody);
-  }
-
 }
